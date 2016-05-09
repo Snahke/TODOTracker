@@ -1,37 +1,28 @@
-<!DOCTYPE html>
 
-<html>
 
-<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  	<meta name="viewport" content="width=device-width, initial-scale=1">
+{% load staticfiles %}
+<title>Impressum</title>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="{% static 'todotracker/styles.css' %}">
 
-	<title>Impressum</title>
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../css/styles.css">
-</head>
 
-<body >
-
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="index.html">TODO Tracker</a>
-			</div>
-			<ul class="nav navbar-nav">
-				<li> <a href="add-todo.html">To Do hinzuf&uuml;gen</a></li>
-				<li> <a href="about.html">Impressum</a></li>
-			</ul>
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="{% url 'todotracker:index' %}">TODO Tracker</a>
 		</div>
-	</nav>
-
-	<div class="container">
-		<h1>Impressum</h1>
-		<hr>
-		<h2>Autoren</h2>
-		<p title="Autoren">Priska Kohnen, Nikita Krohmer</p>
+		<ul class="nav navbar-nav">
+			<li> <a href="{% url 'todotracker:add-todo' %}">To Do hinzuf&uuml;gen</a></li>
+			<li> <a href="{% url 'todotracker:about' %}">Impressum</a></li>
+		</ul>
 	</div>
+</nav>
 
-</body>
-
-</html>
+<div class="container">
+	<h1>Impressum</h1>
+	<hr>
+	<h2>Autoren</h2>
+	<p title="Autoren">Priska Kohnen, Nikita Krohmer</p>
+</div>

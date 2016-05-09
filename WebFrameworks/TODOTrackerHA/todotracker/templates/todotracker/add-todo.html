@@ -1,49 +1,41 @@
-<html>
 
-<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+{% load staticfiles %}
+<title>To Do hinzuf&uuml;gen</title>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="{% static 'todotracker/styles.css' %}">
 
-  <title>To Do hinzuf&uuml;gen</title>
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../css/styles.css">
 
-</head>
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="{% url 'todotracker:index' %}">TODO Tracker</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li> <a href="{% url 'todotracker:add-todo' %}">To Do hinzuf&uuml;gen</a></li>
+			<li> <a href="{% url 'todotracker:about' %}">Impressum</a></li>
+		</ul>
+	</div>
+</nav>
 
-<body>
+<div class="container">
+	<h1>To Do hinzuf&uuml;gen</h1>
+	<form action="{% url 'todotracker:todoadd' %}" method="post">
+	{% csrf_token %}
+		<div class="form-group">
+			<label for="description">Beschreibung:</label>
+			<input type="text" class="form-control" id="description" placeholder="Enter description" value="description"></input> 
+		</div>
+		<div class="form-group">
+			<label for="deadline">Deadline:</label>
+			<input type="date" class="form-control" id="deadline" placeholder="Enter deadline" value="deadline"></input> 
+		</div>
+		<div class="form-group">
+			<label for="progress">Fortschritt:</label>
+			<input type="text" class="form-control" id="progress" placeholder="Enter progress" value="progress"></input> 
+		</div>
+		<button type="submit" class="btn btn-default">Speichern</button>
 
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="index.html">TODO Tracker</a>
-      </div>
-      <ul class="nav navbar-nav">
-        <li> <a href="add-todo.html">To Do hinzuf&uuml;gen</a></li>
-        <li> <a href="about.html">Impressum</a></li>
-      </ul>
-    </div>
-  </nav>
-  
-  <div class="container">
-    <h1>To Do hinzuf&uuml;gen</h1>
-    <form role="form">
-     <div class="form-group">
-      <label for="description">Beschreibung:</label>
-      <input type="text" class="form-control" id="description" placeholder="Enter description"></input> 
-    </div>
-    <div class="form-group">
-      <label for="deadline">Deadline:</label>
-      <input type="date" class="form-control" id="deadline" placeholder="Enter deadline"></input> 
-    </div>
-    <div class="form-group">
-      <label for="progress">Fortschritt:</label>
-      <input type="text" class="form-control" id="progress" placeholder="Enter progress"></input> 
-    </div>
-    <button type="submit" class="btn btn-default">Speichern</button>
-
-  </form> 
+	</form> 
 </div>
-
-</body>
-
-</html>
