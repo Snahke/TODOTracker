@@ -42,29 +42,19 @@
 					<th class="col-sm-1">L&ouml;schen</th>
 				</tr>
 			</thead>
+			{% if todo_list %}
 			<tbody>
+				{% for todo in todo_list %}
 				<tr>
-					<td>Beispielseite mit dem Bootstrap Framework anlegen</td>
-					<td>26. April 2016</td>
-					<td>100%</td>
+					<td>{{ todo.description }}</td>
+					<td>{{ todo.deadline }}</td>
+					<td>{{ todo.progress }}%</td>
 					<td><a href="edit-todo.html"><span class="glyphicon glyphicon-edit"></span></a></td>
 					<td><span class="glyphicon glyphicon-trash"></span></td>
 				</tr>
-				<tr>
-					<td>R&uuml;cksprache mit Anton und Tim</td>
-					<td>02. Mai 2016</td>
-					<td>0%</td>
-					<td><a href="edit-todo.html"><span class="glyphicon glyphicon-edit"></span></a></td>
-					<td><span class="glyphicon glyphicon-trash"></span></td>
-				</tr>
-				<tr>
-					<td>Schlaf nachholen</td>
-					<td>06. Mai 2016</td>
-					<td>15%</td>
-					<td><a href="edit-todo.html"><span class="glyphicon glyphicon-edit"></span></a></td>
-					<td><span class="glyphicon glyphicon-trash"></span></td>
-				</tr>
+				{% endfor %}
 			</tbody>
+			{% endif %}
 		</table> 
 	</div>
 
