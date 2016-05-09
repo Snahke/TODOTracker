@@ -21,21 +21,24 @@
 
 <div class="container">
 	<h1>To Do hinzuf&uuml;gen</h1>
-	<form action="{% url 'todotracker:todoadd' %}" method="post">
+	<form action="" method="post">
 	{% csrf_token %}
 		<div class="form-group">
 			<label for="description">Beschreibung:</label>
-			<input type="text" class="form-control" id="description" placeholder="Enter description" value="description"></input> 
+			<!-- {{ todo_form.description }} -->
+			<input type="text" class="form-control" name="description" placeholder="Enter description"></input>
 		</div>
 		<div class="form-group">
 			<label for="deadline">Deadline:</label>
-			<input type="date" class="form-control" id="deadline" placeholder="Enter deadline" value="deadline"></input> 
+			<!-- {{ todo_form.deadline }} -->
+			<input type="date" class="form-control" name="deadline" placeholder="Enter deadline"></input>
 		</div>
 		<div class="form-group">
 			<label for="progress">Fortschritt:</label>
-			<input type="text" class="form-control" id="progress" placeholder="Enter progress" value="progress"></input> 
+			<!-- {{ todo_form.progress }} -->
+			<input type="text" class="form-control" name="progress" placeholder="Enter progress"></input>
 		</div>
-		<button type="submit" class="btn btn-default">Speichern</button>
+		<button type="submit" value="Create" class="btn btn-default">Speichern</button>
 
 	</form> 
 </div>
