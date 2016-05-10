@@ -1,36 +1,19 @@
-<!DOCTYPE html>
 
-
-<html>
+{% extends 'todotracker/navbar.html' %}
 
 <head>
-
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../css/styles.css">
 	<title>TODO Tracker &aacute; la Priki</title>
-
-
 </head>
 
-
 <body>
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="index.html">TODO Tracker</a>
-			</div>
-			<ul class="nav navbar-nav">
-				<li> <a href="add-todo.html">To Do hinzuf&uuml;gen</a></li>
-				<li> <a href="about.html">Impressum</a></li>
-			</ul>
-		</div>
-	</nav>
 
+	{% block content %}
+	<div class="container">
+
+		<h1>To Do's</h1>
+	</div>
 
 	<div class="container">
-		<h1>To Do's</h1>
 
 		<table class="table table-responsive">
 			<thead>
@@ -38,8 +21,8 @@
 					<th class="col-sm-7">Beschreibung</th>
 					<th class="col-sm-4">Deadline</th>
 					<th class="col-sm-1">Fortschritt</th>
-					<th class="col-sm-1">Bearbeiten</th>
-					<th class="col-sm-1">L&ouml;schen</th>
+					<th class="col-sm-1"></th>
+					<th class="col-sm-1"></th>
 				</tr>
 			</thead>
 			{% if todo_list %}
@@ -49,8 +32,8 @@
 					<td>{{ todo.description }}</td>
 					<td>{{ todo.deadline }}</td>
 					<td>{{ todo.progress }}%</td>
-					<td><a href="edit-todo.html"><span class="glyphicon glyphicon-edit"></span></a></td>
-					<td><span class="glyphicon glyphicon-trash"></span></td>
+					<td><a href="{% url 'todotracker:edit-todo' todo.id %}"><span class="glyphicon glyphicon-edit"></span></a></td>
+					<td><a href="{% url 'todotracker:delete-todo' todo.id %}"><span class="glyphicon glyphicon-trash"></span></a></td>
 				</tr>
 				{% endfor %}
 			</tbody>
@@ -58,6 +41,7 @@
 		</table> 
 	</div>
 
-</body>
 
-</html>
+	{% endblock %}
+
+</body>

@@ -11,5 +11,5 @@ class ToDo(models.Model):
 		])
 
 	def __str__(self):
-		string = self.description + " -- " + self.deadline + " -- " + self.progress
+		string = self.description
 		return string
