@@ -21,15 +21,13 @@ def add_todo(request):
 	if request.method == 'POST':
 		todo_form = AddTodo(request.POST)
 		if todo_form.is_valid():
-			todo_description = request.POST.get("description", "")
-			todo_deadline = request.POST.get("deadline", "")
-			todo_progress = request.POST.get("progress", "")
-			new_todo = ToDo(description=todo_description, deadline=todo_deadline, progress=todo_progress)
+			new_todo = todo_form.save(commit=False)
 			new_todo.save()
-			return render_to_response('todotracker/add-todo.html', {'todo_form': todo_form}, RequestContext(request))
+			return redirect('todotracker/index.html')
 	else:
 		todo_form = AddTodo()
-	return render_to_response('todotracker/add-todo.html', {'todo_form': todo_form})
+	context = {'todo_form' : todo_form}
+	return render(request, 'todotracker/add-todo.html', context)
 
 def edit_todo(request, todo_id):
 	todo = get_object_or_404(ToDo, pk=todo_id)

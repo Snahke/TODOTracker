@@ -1,44 +1,19 @@
+{% extends 'todotracker/navbar.html' %}
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+	<title>To Do hinzuf&uuml;gen</title>
+</head>
 
-{% load staticfiles %}
-<title>To Do hinzuf&uuml;gen</title>
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link rel="stylesheet" href="{% static 'todotracker/styles.css' %}">
+<body>
+	{% block content %}
+	<div class="container">
+		<h1>To Do hinzuf&uuml;gen</h1>
+		<form class="todo-form" method="POST">
+			{% csrf_token %}
+			{{ todo_form.as_p }}
+			<button type="submit" value="Create" class="save btn btn-default">Speichern</button>
 
-
-<nav class="navbar navbar-default">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="{% url 'todotracker:index' %}">TODO Tracker</a>
-		</div>
-		<ul class="nav navbar-nav">
-			<li> <a href="{% url 'todotracker:add-todo' %}">To Do hinzuf&uuml;gen</a></li>
-			<li> <a href="{% url 'todotracker:about' %}">Impressum</a></li>
-		</ul>
+		</form> 
 	</div>
-</nav>
-
-<div class="container">
-	<h1>To Do hinzuf&uuml;gen</h1>
-	<form action="" method="post">
-	{% csrf_token %}
-		<div class="form-group">
-			<label for="description">Beschreibung:</label>
-			<!-- {{ todo_form.description }} -->
-			<input type="text" class="form-control" name="description" placeholder="Enter description"></input>
-		</div>
-		<div class="form-group">
-			<label for="deadline">Deadline:</label>
-			<!-- {{ todo_form.deadline }} -->
-			<input type="date" class="form-control" name="deadline" placeholder="Enter deadline"></input>
-		</div>
-		<div class="form-group">
-			<label for="progress">Fortschritt:</label>
-			<!-- {{ todo_form.progress }} -->
-			<input type="text" class="form-control" name="progress" placeholder="Enter progress"></input>
-		</div>
-		<button type="submit" value="Create" class="btn btn-default">Speichern</button>
-
-	</form> 
-</div>
+	{% endblock %}
+</body>

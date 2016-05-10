@@ -1,10 +1,7 @@
 from django import forms
-from django.core.validators import MinValueValidator, MaxValueValidator
+from .models import ToDo
 
-class AddTodo(forms.Form):
-	description = forms.CharField(max_length=160)
-	deadline = forms.DateField('Deadline')
-	progress = forms.IntegerField(validators=[
-		MinValueValidator(0), 
-		MaxValueValidator(100)
-		])
+class AddTodo(forms.ModelForm):
+	class Meta:
+		model = ToDo
+		fields = ['description', 'deadline', 'progress']
