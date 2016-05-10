@@ -1,47 +1,37 @@
 
 {% extends 'todotracker/navbar.html' %}
 
-<head>
-	<title>TODO Tracker &aacute; la Priki</title>
-</head>
+{% block title %}TODO Tracker &aacute; la Priki{% endblock %}
 
-<body>
+{% block content %}
+<div class="container">
+	<h1>To Do's</h1>
+</div>
 
-	{% block content %}
-	<div class="container">
-
-		<h1>To Do's</h1>
-	</div>
-
-	<div class="container">
-
-		<table class="table table-responsive">
-			<thead>
-				<tr>
-					<th class="col-sm-7">Beschreibung</th>
-					<th class="col-sm-4">Deadline</th>
-					<th class="col-sm-1">Fortschritt</th>
-					<th class="col-sm-1"></th>
-					<th class="col-sm-1"></th>
-				</tr>
-			</thead>
-			{% if todo_list %}
-			<tbody>
-				{% for todo in todo_list %}
-				<tr>
-					<td>{{ todo.description }}</td>
-					<td>{{ todo.deadline }}</td>
-					<td>{{ todo.progress }}%</td>
-					<td><a href="{% url 'todotracker:edit-todo' todo.id %}"><span class="glyphicon glyphicon-edit"></span></a></td>
-					<td><a href="{% url 'todotracker:delete-todo' todo.id %}"><span class="glyphicon glyphicon-trash"></span></a></td>
-				</tr>
-				{% endfor %}
-			</tbody>
-			{% endif %}
-		</table> 
-	</div>
-
-
-	{% endblock %}
-
-</body>
+<div class="container">
+	<table class="table table-responsive">
+		<thead>
+			<tr>
+				<th class="col-sm-7">Beschreibung</th>
+				<th class="col-sm-2">Deadline</th>
+				<th class="col-sm-2">Fortschritt</th>
+				<th class="col-sm-1"></th>
+				<th class="col-sm-1"></th>
+			</tr>
+		</thead>
+		{% if todo_list %}
+		<tbody>
+			{% for todo in todo_list %}
+			<tr>
+				<td>{{ todo.description }}</td>
+				<td>{{ todo.deadline }}</td>
+				<td>{{ todo.progress }}%</td>
+				<td><a href="{% url 'todotracker:edit-todo' todo.id %}"><span class="glyphicon glyphicon-edit"></span></a></td>
+				<td><a href="{% url 'todotracker:delete-todo' todo.id %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+		{% endif %}
+	</table> 
+</div>
+{% endblock %}

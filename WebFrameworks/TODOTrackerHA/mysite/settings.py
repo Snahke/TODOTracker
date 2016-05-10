@@ -109,7 +109,7 @@ LANGUAGE_CODE = 'de-de'
 
 TIME_ZONE = 'Europe/Berlin'
 
-DATE_FORMAT = 'd.m.Y'
+DATE_FORMAT = 'Y-m-d'
 
 USE_I18N = True
 

@@ -11,9 +11,15 @@ th, td {
 body {
 	background-color: mistyrose;
 	color: midnightblue;
+    word-wrap: break-word;
 }
 h1{
 	color: midnightblue;
+    word-wrap: break-word;
+}
+table{
+    table-layout: fixed;
+    word-wrap: break-word;
 }
 /*#header {
     background-color:lightsalmon;
@@ -28,9 +34,5 @@ h1{
     width:100px;
     float:left;
     padding:5px;	      
-}
-#table {
-    float:left;
-    padding:10px;    
 }
 */

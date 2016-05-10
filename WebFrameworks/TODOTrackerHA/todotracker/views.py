@@ -27,7 +27,15 @@ def add_todo(request):
 
 def edit_todo(request, todo_id):
 	todo = get_object_or_404(ToDo, pk=todo_id)
-	context = {'todo': todo}
+	if request.method == 'POST':
+		todo_form = AddTodo(request.POST, instance=todo)
+		if todo_form.is_valid():
+			new_todo = todo_form.save(commit=False)
+			new_todo.save()
+			return redirect('todotracker:index')
+	else:
+		todo_form = AddTodo(instance=todo)
+	context = {'todo_form' : todo_form, 'todo': todo}
 	return render(request, 'todotracker/edit-todo.html', context)
 
 def delete_todo(request, todo_id):
