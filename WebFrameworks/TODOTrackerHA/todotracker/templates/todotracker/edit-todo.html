@@ -10,18 +10,18 @@
 		<h1>To Do bearbeiten</h1>
 		<form role="form">
 			<div class="form-group">
-				<label for="description">Beschreibung:</label>
-				<input type="text" class="form-control" id="description" placeholder="Enter description"></input> 
+				<label for="id_description">Beschreibung:</label>
+				<input id="id_description" type="text" name="description" class="form-control" placeholder="Enter description" maxlength="160" value="{{ todo.description }}"></input> 
 			</div>
 			<div class="form-group">
-				<label for="deadline">Deadline:</label>
-				<input type="date" class="form-control" id="deadline" placeholder="Enter deadline"></input> 
+				<label for="id_deadline">Deadline:</label>
+				<input id="id_deadline" type="date" name="deadline" class="form-control" placeholder="Enter deadline" value="{{ todo.deadline }}"></input> 
 			</div>
 			<div class="form-group">
-				<label for="progress">Fortschritt:</label>
-				<input type="text" class="form-control" id="progress" placeholder="Enter progress"></input> 
+				<label for="id_progress">Fortschritt:</label>
+				<input id="id_progress" type="text" name="progress" class="form-control" placeholder="Enter progress" value="{{ todo.progress }}"></input> 
 			</div>
-			<button type="submit" class="btn btn-default">Speichern</button>
+			<button type="submit" value="Create" class="save btn btn-default">Speichern</button>
 
 		</form> 
 	</div>
