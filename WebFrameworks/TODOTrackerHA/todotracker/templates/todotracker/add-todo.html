@@ -1,30 +1,28 @@
 {% extends 'todotracker/navbar.html' %}
 
-<head>
-	<title>To Do hinzuf&uuml;gen</title>
-</head>
+{% block title %}To Do hinzuf&uuml;gen{% endblock %}
 
-<body>
-	{% block content %}
-	<div class="container">
-		<h1>To Do hinzuf&uuml;gen</h1>
-		<form class="todo-form" method="POST">
-			{% csrf_token %}
-			<div class="form-group">
-				<label for="id_description">Beschreibung:</label>
-				<input id="id_description" type="text" name="description" class="form-control" placeholder="Enter description" maxlength="160"></input> 
-			</div>
-			<div class="form-group">
-				<label for="iddeadline">Deadline:</label>
-				<input id="id_deadline" type="date" name="deadline" class="form-control" placeholder="Enter deadline"></input> 
-			</div>
-			<div class="form-group">
-				<label for="progress">Fortschritt:</label>
-				<input id="id_progress" type="text" name="progress" class="form-control" placeholder="Enter progress"></input> 
-			</div>
-			<button type="submit" value="Create" class="save btn btn-default">Speichern</button>
 
-		</form> 
-	</div>
-	{% endblock %}
-</body>
+
+{% block content %}
+<div class="container">
+	<h1>To Do hinzuf&uuml;gen</h1>
+	<form class="todo-form" method="POST">
+		{% csrf_token %}
+		<div class="form-group">
+			<label for="id_description">Beschreibung:</label>
+			<input id="id_description" type="text" name="description" class="form-control" placeholder="Enter description" maxlength="160"></input> 
+		</div>
+		<div class="form-group">
+			<label for="iddeadline">Deadline:</label>
+			<input id="id_deadline" type="date" name="deadline" class="form-control" placeholder="Enter deadline - YYYY-MM-DD"></input> 
+		</div>
+		<div class="form-group">
+			<label for="progress">Fortschritt:</label>
+			<input id="id_progress" type="text" name="progress" class="form-control" placeholder="Enter progress"></input> 
+		</div>
+		<button type="submit" value="Create" class="save btn btn-default">Speichern</button>
+
+	</form> 
+</div>
+{% endblock %}
